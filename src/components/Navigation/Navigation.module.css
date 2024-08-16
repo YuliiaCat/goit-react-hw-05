@@ -1,0 +1,19 @@
+.header {
+  box-shadow: 0px 10px 20px -10px #3d3d3d;
+}
+
+.nav {
+  display: flex;
+}
+
+.link {
+  color: inherit;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.isActive {
+  background-color: #3b3e4a;
+  color: #f1f2f9;
+}
