@@ -58,18 +58,19 @@ const MoviesPage = () => {
   };
 
   const filteredMovies = useMemo(() => moviesList.filter(movie => 
-    movie.title.toLowerCase().includes(query.toLowerCase()) && movie.backdrop_path !== null,
+    movie.title.toLowerCase().includes(query.toLowerCase()) && movie.backdrop_path !== null
   ), [moviesList, query]);
 
   return (
     <>
       <SearchBar defaultSearchValue={query} onSubmit={handleSearch} />
       {loading && <Loader />}
-      {filteredMovies ? (
+      {!loading && query && filteredMovies.length === 0 && (
+        <p className="text">There are no movies that match the query</p>
+      )}
+      {!loading && filteredMovies.length > 0 && (
         <MoviesList movies={filteredMovies} />
-      ) : (
-        !loading && <p className="text">There are no movies that match the query</p>
-      ) }
+      )}
       <ToastContainer transition={Slide} />
     </>
   )
